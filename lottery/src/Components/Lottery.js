@@ -1,5 +1,6 @@
 import React from 'react';
 import Ball from './Ball';
+import '../styles/Lottery.css';
 
 export default class Lottery extends React.Component {
 	// Props

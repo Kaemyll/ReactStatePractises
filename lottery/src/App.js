@@ -7,6 +7,7 @@ export default class App extends React.Component {
 		return (
 			<div className="App">
 				<Lottery />
+				<Lottery title="Mini Loto" maxNum={25} numBalls={4} />
 			</div>
 		);
 	}
