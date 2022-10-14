@@ -15,23 +15,29 @@ export default class Lottery extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			nums : []
+			nums : Array.from({ length: this.props.numBalls })
 		};
+		this.handleClick = this.handleClick.bind(this);
 	}
 
-	// Methods that regenerate nums in state
-	// generate = () => {
-	//     onclick = {this.generate}
-	// }
+	// generate an array of random numbers
+	generate() {
+		this.setState((curState) => ({
+			nums : curState.nums.map((n) => Math.floor(Math.random() * this.props.maxNum) + 1)
+		}));
+	}
+
+	handleClick() {
+		this.generate();
+	}
 
 	render() {
 		return (
-			<div>
-				<h1>Lottery Simple APP</h1>
-				<div>
-					<Ball num={17} />
-				</div>
-			</div>
+			<section className="Lottery">
+				<h1>{this.props.title}</h1>
+				<div>{this.state.nums.map((n) => <Ball num={n} />)}</div>
+				<button onClick={this.handleClick}>Tirage du loto !</button>
+			</section>
 		);
 	}
 }
